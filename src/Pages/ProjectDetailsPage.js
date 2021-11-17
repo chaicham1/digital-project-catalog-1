@@ -7,7 +7,6 @@ import ArrowLeftRoundedIcon from '@mui/icons-material/ArrowLeftRounded'
 import Error from '../Components/Common/Error'
 import ProjectLinksComponent from '../Components/ProjectLinksComponent'
 import ProjectFilesComponent from '../Components/ProjectFilesComponent'
-import ProjectAdminsListComponent from '../Components/ProjectAdminsListComponent'
 import TeamMembersContainer from '../Components/TeamMembers/TeamMembersContainer'
 import ProjectTechnologiesContainer from '../Components/ProjectTechnologies/ProjectTechnologiesContainer'
 import AmdocsPoductContainer from '../Components/AmdoctProduct/AmdocsPoductContainer'
@@ -49,7 +48,6 @@ function ProjectDetailsPage() {
                 description={currentProject.description}
                 imgUrl={currentProject.imgUrl}
               />
-              <ProjectAdminsListComponent admins={currentProject.admins} />
               <AmdocsPoductContainer amdocsProduct={currentProject.amdocsProduct} />
               <ProjectTechnologiesContainer technologies={currentProject.technologies} />
               <TeamMembersContainer teamMembers={currentProject.teamMembers} />

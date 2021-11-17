@@ -14,7 +14,7 @@ function ProjectCardComponent({ name, imgUrl, description }) {
 
   return (
     <Card>
-      <CardMedia component="img" height="150" image={imgUrl} alt="green iguana" />
+      <CardMedia component="img" height="150" image={imgUrl} alt={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" textAlign="center">
           {name}
