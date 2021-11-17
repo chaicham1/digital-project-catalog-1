@@ -11,7 +11,7 @@ function ProjectDescriptionComponent({ description, imgUrl }) {
       </Grid>
       <Grid item container direction="column" alignItems="center" md={4}>
         <Card>
-          <CardMedia component="img" height="150" image={imgUrl} alt="green iguana" />
+          <CardMedia component="img" height="150" image={imgUrl} alt={imgUrl} />
         </Card>
       </Grid>
     </Grid>
