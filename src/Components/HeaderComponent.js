@@ -22,7 +22,6 @@ function HeaderComponent({ projects, searchHandler, themeSwitchHandler, isDarkTh
         <Grid container spacing={2} justifyContent="left">
           <Grid item container spacing={1} xs={12} sm={8} alignSelf="center">
             <Grid item xs={2} sm={1} alignSelf="center">
-              {/* <Lottie options={headerLogoOption} isClickToPauseDisabled={true} /> */}
               <IconButton onClick={themeSwitchHandler} color="inherit">
                 {isDarkTheme ? <Brightness4RoundedIcon /> : <Brightness7RoundedIcon />}
               </IconButton>
