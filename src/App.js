@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useRoutes } from 'react-router-dom'
-import ProjectDetailsPage from './Pages/ProjectDetailsPage'
+
 import ProjectsCatalogPage from './Pages/ProjectsCatalogPage'
+import ProjectDetailsPage from './Pages/ProjectDetailsPage'
 import NotFoundPage from './Pages/NotFoundPage'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
