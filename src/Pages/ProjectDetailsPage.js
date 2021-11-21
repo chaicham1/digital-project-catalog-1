@@ -30,18 +30,18 @@ function ProjectDetailsPage() {
 
   return (
     <>
-      {currentProject ? (
-        <Container>
-          <Box mt={5} mb={5}>
-            <Button
-              size="small"
-              onClick={() => {
-                navigate('/', { replace: true })
-              }}
-            >
-              <ArrowLeftRoundedIcon />
-              Back
-            </Button>
+      <Container>
+        <Box mt={5} mb={5}>
+          <Button
+            size="small"
+            onClick={() => {
+              navigate('/', { replace: true })
+            }}
+          >
+            <ArrowLeftRoundedIcon />
+            Back
+          </Button>
+          {currentProject ? (
             <Grid container spacing={5} direction="column" alignItems="center">
               <ProjectTitleComponent name={currentProject.name} />
               <ProjectDescriptionComponent
@@ -54,24 +54,11 @@ function ProjectDetailsPage() {
               <ProjectLinksComponent links={currentProject.links} />
               <ProjectFilesComponent files={currentProject.files} />
             </Grid>
-          </Box>
-        </Container>
-      ) : (
-        <Container>
-          <Box mt={5}>
-            <Button
-              size="small"
-              onClick={() => {
-                navigate('/', { replace: true })
-              }}
-            >
-              <ArrowLeftRoundedIcon />
-              Back
-            </Button>
+          ) : (
             <Error message={`Unable to find project name: ${id}`} />
-          </Box>
-        </Container>
-      )}
+          )}
+        </Box>
+      </Container>
     </>
   )
 }
