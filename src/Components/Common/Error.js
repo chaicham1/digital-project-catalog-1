@@ -1,16 +1,12 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Alert, AlertTitle } from '@mui/material'
 
 function Error({ message }) {
   return (
-    <>
-      <Typography variant="h3" component="div" gutterBottom textAlign="center">
-        Error
-      </Typography>
-      <Typography variant="h6" component="div" gutterBottom textAlign="center">
-        {message}
-      </Typography>
-    </>
+    <Alert severity="error" sx={{ mt: 5 }}>
+      <AlertTitle>Error</AlertTitle>
+      {message}
+    </Alert>
   )
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useRoutes } from 'react-router-dom'
 import ProjectDetailsPage from './Pages/ProjectDetailsPage'
 import ProjectsCatalogPage from './Pages/ProjectsCatalogPage'
+import NotFoundPage from './Pages/NotFoundPage'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
@@ -36,6 +37,12 @@ function App() {
       <ProjectDetailsPage />
     </ThemeProvider>
   )
+  const notFoundTheme = (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <NotFoundPage />
+    </ThemeProvider>
+  )
 
   let routes = useRoutes([
     {
@@ -43,6 +50,7 @@ function App() {
       element: projectCatalogWithTheme,
     },
     { path: ':id', element: projectCDetailsWithTheme },
+    { path: '*', element: notFoundTheme },
   ])
 
   return routes
