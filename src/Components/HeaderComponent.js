@@ -12,69 +12,79 @@ import {
 import Brightness4RoundedIcon from '@mui/icons-material/Brightness4Rounded'
 import Brightness7RoundedIcon from '@mui/icons-material/Brightness7Rounded'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
+import PersonRoundedIcon from '@mui/icons-material/PersonRounded'
 
 function HeaderComponent({ projects, searchHandler, themeSwitchHandler, isDarkTheme }) {
   const projectsArrSearch = projects ? projects.map((p) => p.name) : []
 
+  const textColor = isDarkTheme ? '#282828' : '#fff'
+
   return (
-    <Box p={2} sx={{ backgroundColor: '#4498d8', color: 'white', boxShadow: 3 }}>
+    <Box pt={2} pb={2} sx={{ backgroundColor: '#4498d8', color: textColor, boxShadow: 3 }}>
       <Container>
-        <Grid container spacing={2} justifyContent="left">
-          <Grid item container spacing={1} xs={12} sm={8} alignSelf="center">
+        <Grid container rowSpacing={2}>
+          <Grid item container xs={12} sm={8} textAlign="left">
             <Grid item xs={2} sm={1} alignSelf="center">
               <IconButton onClick={themeSwitchHandler} color="inherit">
                 {isDarkTheme ? <Brightness4RoundedIcon /> : <Brightness7RoundedIcon />}
               </IconButton>
             </Grid>
-            <Grid item container justifyContent="left" xs={10} sm={11} alignSelf="center">
+            <Grid item xs={10} sm={11} alignSelf="center">
               <Typography variant="h6" component="div">
                 Digital Projects Catalog
               </Typography>
             </Grid>
           </Grid>
-          <Grid item container justifyContent="left" xs={12} sm={4} alignSelf="center">
-            <Autocomplete
-              disablePortal
-              fullWidth
-              forcePopupIcon={false}
-              id="combo-box-demo"
-              options={projectsArrSearch}
-              size={'small'}
-              onChange={(e, v, r) => {
-                searchHandler(v)
-              }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={<SearchRoundedIcon sx={{ color: 'white' }} />}
-                  sx={{
-                    input: { color: 'white' },
-                    button: { color: 'white' },
-                    '& label.Mui-focused': {
-                      color: 'white',
-                    },
-                    '& .MuiInput-underline:after': {
-                      borderBottomColor: 'white',
-                      color: 'white',
-                    },
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: 'white',
-                        color: 'white',
+          <Grid item container xs={12} sm={4} textAlign="right">
+            <Grid item xs={10} alignSelf="center">
+              <Autocomplete
+                disablePortal
+                fullWidth
+                forcePopupIcon={false}
+                id="combo-box-demo"
+                options={projectsArrSearch}
+                onChange={(e, v, r) => {
+                  searchHandler(v)
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    size="small"
+                    label={<SearchRoundedIcon sx={{ color: textColor }} />}
+                    sx={{
+                      input: { color: textColor },
+                      button: { color: textColor },
+                      '& label.Mui-focused': {
+                        color: textColor,
                       },
-                      '&:hover fieldset': {
-                        borderColor: 'white',
-                        color: 'white',
+                      '& .MuiInput-underline:after': {
+                        borderBottomColor: textColor,
+                        color: textColor,
                       },
-                      '&.Mui-focused fieldset': {
-                        borderColor: 'white',
-                        color: 'white',
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: textColor,
+                          color: textColor,
+                        },
+                        '&:hover fieldset': {
+                          borderColor: textColor,
+                          color: textColor,
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: textColor,
+                          color: textColor,
+                        },
                       },
-                    },
-                  }}
-                />
-              )}
-            />
+                    }}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item xs={2} alignSelf="center">
+              <IconButton onClick={() => {}} color="inherit">
+                <PersonRoundedIcon />
+              </IconButton>
+            </Grid>
           </Grid>
         </Grid>
       </Container>
