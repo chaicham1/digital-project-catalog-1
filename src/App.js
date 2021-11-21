@@ -19,6 +19,9 @@ function App() {
         default: mode === 'dark' ? '#282828' : '#fff',
       },
     },
+    typography: {
+      fontFamily: ['Open Sans', 'sans-serif'].join(','),
+    },
   })
 
   function themeSwitchHandler() {
