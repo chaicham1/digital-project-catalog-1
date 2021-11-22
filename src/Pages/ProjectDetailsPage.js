@@ -61,7 +61,7 @@ function ProjectDetailsPage() {
                   description={currentProject.description}
                   imgUrl={currentProject.imgUrl}
                 />
-                <AmdocsPoductContainer amdocsProduct={currentProject.amdocsProduct} />
+                <AmdocsPoductContainer amdocsProducts={currentProject.amdocsProducts} />
                 <ProjectTechnologiesContainer technologies={currentProject.technologies} />
                 <TeamMembersContainer teamMembers={currentProject.teamMembers} />
                 <ProjectLinksComponent links={currentProject.links} />
