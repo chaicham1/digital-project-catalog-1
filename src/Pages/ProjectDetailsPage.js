@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-import { Container, Box, Grid, Button } from '@mui/material'
-import ArrowLeftRoundedIcon from '@mui/icons-material/ArrowLeftRounded'
+import { Grid } from '@mui/material'
 
 import Error from '../Components/Common/Error'
 import ProjectLinksComponent from '../Components/ProjectLinksComponent'
@@ -14,11 +13,11 @@ import AmdocsPoductContainer from '../Components/AmdoctProduct/AmdocsPoductConta
 import ProjectTitleComponent from '../Components/ProjectTitleComponent'
 import ProjectDescriptionComponent from '../Components/ProjectDescriptionComponent'
 import PageLoader from '../Components/Common/PageLoader'
+import BasicPageTamplate from '../Components/Common/BasicPageTamplate'
 
 function ProjectDetailsPage() {
   //TODO: Check if project name exist, it not put message to user and button to redirect to homepage
   const projects = useSelector((state) => state.projects)
-  const navigate = useNavigate()
 
   const [loading, setLoading] = useState(true)
 
@@ -43,35 +42,24 @@ function ProjectDetailsPage() {
       {loading ? (
         <PageLoader />
       ) : (
-        <Container>
-          <Box mt={5} mb={5}>
-            <Button
-              size="small"
-              onClick={() => {
-                navigate('/', { replace: true })
-              }}
-            >
-              <ArrowLeftRoundedIcon />
-              Back
-            </Button>
-            {currentProject ? (
-              <Grid container spacing={5} direction="column" alignItems="center">
-                <ProjectTitleComponent name={currentProject.name} />
-                <ProjectDescriptionComponent
-                  description={currentProject.description}
-                  imgUrl={currentProject.imgUrl}
-                />
-                <AmdocsPoductContainer amdocsProducts={currentProject.amdocsProducts} />
-                <ProjectTechnologiesContainer technologies={currentProject.technologies} />
-                <TeamMembersContainer teamMembers={currentProject.teamMembers} />
-                <ProjectLinksComponent links={currentProject.links} />
-                <ProjectFilesComponent files={currentProject.files} />
-              </Grid>
-            ) : (
-              <Error message={`Unable to find project name: ${id}`} />
-            )}
-          </Box>
-        </Container>
+        <BasicPageTamplate>
+          {currentProject ? (
+            <Grid container spacing={5} direction="column" alignItems="center">
+              <ProjectTitleComponent name={currentProject.name} />
+              <ProjectDescriptionComponent
+                description={currentProject.description}
+                imgUrl={currentProject.imgUrl}
+              />
+              <AmdocsPoductContainer amdocsProducts={currentProject.amdocsProducts} />
+              <ProjectTechnologiesContainer technologies={currentProject.technologies} />
+              <TeamMembersContainer teamMembers={currentProject.teamMembers} />
+              <ProjectLinksComponent links={currentProject.links} />
+              <ProjectFilesComponent files={currentProject.files} />
+            </Grid>
+          ) : (
+            <Error message={`Unable to find project name: ${id}`} />
+          )}
+        </BasicPageTamplate>
       )}
     </>
   )

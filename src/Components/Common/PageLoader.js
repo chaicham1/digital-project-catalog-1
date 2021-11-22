@@ -19,7 +19,7 @@ function PageLoader() {
       <Box mt={10}>
         <Grid container spacing={0} justifyContent="center">
           <Grid item container justifyContent="center" xs={12}>
-            <Lottie options={loaderLottieOptions} style={{ height: '50vh' }} />
+            <Lottie options={loaderLottieOptions} style={{ height: '30vh' }} />
           </Grid>
         </Grid>
       </Box>

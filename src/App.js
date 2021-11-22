@@ -8,6 +8,7 @@ import NotFoundPage from './Pages/NotFoundPage'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import LoginPage from './Pages/LoginPage'
+import AdminPage from './Pages/AdminPage'
 
 function App() {
   const [darkState, setDarkState] = useState(false)
@@ -54,6 +55,12 @@ function App() {
       <LoginPage />
     </ThemeProvider>
   )
+  const adminTheme = (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <AdminPage />
+    </ThemeProvider>
+  )
 
   let routes = useRoutes([
     {
@@ -62,6 +69,7 @@ function App() {
     },
     { path: ':id', element: projectCDetailsWithTheme },
     { path: 'login', element: loginTheme },
+    { path: 'admin', element: adminTheme },
     { path: '*', element: notFoundTheme },
   ])
 

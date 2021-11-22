@@ -44,7 +44,7 @@ function ProjectsCatalogPage({ themeSwitchHandler, isDarkTheme }) {
           />
           <Container>
             <Box mt={5} mb={0}>
-              <Grid container={true} spacing={2} justifyContent="center">
+              <Grid container spacing={2} justifyContent="center">
                 {projects &&
                   !searchProject &&
                   projects.map((project) => {

@@ -1,35 +1,13 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router'
+import React from 'react'
 
-import { Container, Box, Button } from '@mui/material'
-import ArrowLeftRoundedIcon from '@mui/icons-material/ArrowLeftRounded'
 import Error from '../Components/Common/Error'
+import BasicPageTamplate from '../Components/Common/BasicPageTamplate'
 
 function NotFoundPage() {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   return (
-    <>
-      <Container>
-        <Box mt={5} mb={5}>
-          <Button
-            size="small"
-            onClick={() => {
-              navigate('/', { replace: true })
-            }}
-          >
-            <ArrowLeftRoundedIcon />
-            Home
-          </Button>
-
-          <Error message={`404 NOT FOUND`} />
-        </Box>
-      </Container>
-    </>
+    <BasicPageTamplate>
+      <Error message={`404 NOT FOUND`} />
+    </BasicPageTamplate>
   )
 }
 
