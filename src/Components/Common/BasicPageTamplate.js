@@ -5,7 +5,7 @@ import { Button, Container } from '@mui/material'
 import { Box } from '@mui/system'
 import ArrowLeftRoundedIcon from '@mui/icons-material/ArrowLeftRounded'
 
-function BasicPageTamplate({ children, goTo = 'Home' }) {
+function BasicPageTamplate({ children, goTo = 'Back' }) {
   const navigate = useNavigate()
   return (
     <>
@@ -14,7 +14,7 @@ function BasicPageTamplate({ children, goTo = 'Home' }) {
           <Button
             size="small"
             onClick={() => {
-              navigate('/', { replace: true })
+              navigate(-1)
             }}
           >
             <ArrowLeftRoundedIcon />

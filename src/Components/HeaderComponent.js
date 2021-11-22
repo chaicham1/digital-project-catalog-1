@@ -86,7 +86,7 @@ function HeaderComponent({ projects, searchHandler, themeSwitchHandler, isDarkTh
             <Grid item xs={2} alignSelf="center">
               <IconButton
                 onClick={() => {
-                  navigate('/login', { replace: true })
+                  navigate('/login')
                 }}
                 color="inherit"
               >

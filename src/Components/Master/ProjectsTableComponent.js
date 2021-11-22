@@ -64,7 +64,7 @@ function ProjectsTableComponent() {
           <TableCell component="th" scope="row">
             <Button
               onClick={() => {
-                navigate(`/${p.name}`, { replace: true })
+                navigate(`/${p.name}`)
               }}
             >
               {p.name}
