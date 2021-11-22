@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 
 import {
   Grid,
@@ -16,6 +17,8 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded'
 
 function HeaderComponent({ projects, searchHandler, themeSwitchHandler, isDarkTheme }) {
   const projectsArrSearch = projects ? projects.map((p) => p.name) : []
+
+  const navigate = useNavigate()
 
   const textColor = isDarkTheme ? '#282828' : '#fff'
 
@@ -81,7 +84,12 @@ function HeaderComponent({ projects, searchHandler, themeSwitchHandler, isDarkTh
               />
             </Grid>
             <Grid item xs={2} alignSelf="center">
-              <IconButton onClick={() => {}} color="inherit">
+              <IconButton
+                onClick={() => {
+                  navigate('/login', { replace: true })
+                }}
+                color="inherit"
+              >
                 <PersonRoundedIcon />
               </IconButton>
             </Grid>
