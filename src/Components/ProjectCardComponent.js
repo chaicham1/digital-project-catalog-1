@@ -14,7 +14,7 @@ function ProjectCardComponent({ name, imgUrl, description }) {
     <Card>
       <CardActionArea
         onClick={() => {
-          navigate(`/${name}`)
+          navigate(`/${name.toLowerCase()}`)
         }}
       >
         <CardMedia component="img" height="150" image={imgUrl} alt={name} />

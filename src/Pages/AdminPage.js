@@ -4,6 +4,8 @@ import BasicPageTamplate from '../Components/Common/BasicPageTamplate'
 
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone'
 import ProjectsTableComponent from '../Components/Master/ProjectsTableComponent'
+import TechnologiesTableComponent from '../Components/Master/TechnologiesTableComponent'
+import AmdocsProductsTableComponent from '../Components/Master/AmdocsProductsTableComponent'
 
 function AdminPage() {
   //TODO:
@@ -22,6 +24,12 @@ function AdminPage() {
         </Grid>
         <Grid xs={12} item container justifyContent="left">
           <ProjectsTableComponent />
+        </Grid>
+        <Grid xs={12} item container justifyContent="left">
+          <TechnologiesTableComponent />
+        </Grid>
+        <Grid xs={12} item container justifyContent="left">
+          <AmdocsProductsTableComponent />
         </Grid>
       </Grid>
     </BasicPageTamplate>

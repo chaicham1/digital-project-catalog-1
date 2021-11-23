@@ -23,8 +23,8 @@ function ProjectDetailsPage() {
 
   const { id } = useParams() //get project name from url
 
-  const currentProject = projects?.find((pro) => {
-    return pro.name === id
+  const currentProject = projects?.find((p) => {
+    return p.name.toUpperCase() === id.toUpperCase()
   })
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function ProjectDetailsPage() {
         <BasicPageTamplate>
           {currentProject ? (
             <Grid container spacing={5} direction="column" alignItems="center">
-              <ProjectTitleComponent name={currentProject.name} />
+              <ProjectTitleComponent name={currentProject.name.toUpperCase()} />
               <ProjectDescriptionComponent
                 description={currentProject.description}
                 imgUrl={currentProject.imgUrl}

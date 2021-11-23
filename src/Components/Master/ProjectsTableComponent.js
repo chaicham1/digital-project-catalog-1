@@ -64,17 +64,17 @@ function ProjectsTableComponent() {
           <TableCell component="th" scope="row">
             <Button
               onClick={() => {
-                navigate(`/${p.name}`)
+                navigate(`/${p.name.toLowerCase()}`)
               }}
             >
               {p.name}
             </Button>
           </TableCell>
           <TableCell align="left">
-            <CardMedia component="img" height={20} image={p.imgUrl} alt={p.name} />
+            <CardMedia component="img" height={50} image={p.imgUrl} alt={p.name} />
           </TableCell>
           <TableCell align="left">{p.description.slice(0, 100)}...</TableCell>
-          <TableCell component="th" scope="row">
+          <TableCell component="th" scope="row" align="right">
             <IconButton
               aria-label="delete project"
               size="small"
@@ -108,11 +108,13 @@ function ProjectsTableComponent() {
               <TableRow>
                 <TableCell></TableCell>
                 <TableCell>Name</TableCell>
-                <TableCell align="left">Image</TableCell>
+                <TableCell align="left" width={50}>
+                  Image
+                </TableCell>
                 <TableCell align="left" sx={{ minWidth: 500 }}>
                   Description
                 </TableCell>
-                <TableCell>
+                <TableCell align="right">
                   <Tooltip title="Add New Project">
                     <IconButton
                       aria-label="add new project"

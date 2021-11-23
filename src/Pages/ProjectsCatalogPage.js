@@ -22,7 +22,7 @@ function ProjectsCatalogPage({ themeSwitchHandler, isDarkTheme }) {
   function changeCurrentProjectOnSearch(projectName) {
     if (projectName) {
       let newSearchProject = projects?.find((p) => {
-        return p.name === projectName
+        return p.name.toUpperCase() === projectName.toUpperCase()
       })
       setSearchProject(newSearchProject)
     } else {
@@ -53,7 +53,7 @@ function ProjectsCatalogPage({ themeSwitchHandler, isDarkTheme }) {
                         <ProjectCardComponent
                           imgUrl={project.imgUrl}
                           description={project.description}
-                          name={project.name}
+                          name={project.name.toUpperCase()}
                         />
                       </Grid>
                     )
@@ -63,7 +63,7 @@ function ProjectsCatalogPage({ themeSwitchHandler, isDarkTheme }) {
                     <ProjectCardComponent
                       imgUrl={searchProject.imgUrl}
                       description={searchProject.description}
-                      name={searchProject.name}
+                      name={searchProject.name.toUpperCase()}
                     />
                   </Grid>
                 )}

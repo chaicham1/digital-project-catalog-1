@@ -16,7 +16,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded'
 
 function HeaderComponent({ projects, searchHandler, themeSwitchHandler, isDarkTheme }) {
-  const projectsArrSearch = projects ? projects.map((p) => p.name) : []
+  const projectsArrSearch = projects ? projects.map((p) => p.name.toUpperCase()) : []
 
   const navigate = useNavigate()
 
