@@ -44,7 +44,7 @@ function ProjectDetailsPage() {
       ) : (
         <BasicPageTamplate>
           {currentProject ? (
-            <Grid container spacing={5} direction="column" alignItems="center">
+            <Grid container spacing={3} pt={2} direction="column" alignItems="center">
               <ProjectTitleComponent name={currentProject.name.toUpperCase()} />
               <ProjectDescriptionComponent
                 description={currentProject.description}

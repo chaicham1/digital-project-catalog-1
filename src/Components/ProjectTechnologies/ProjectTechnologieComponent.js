@@ -1,15 +1,15 @@
 import React from 'react'
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
 
-function AmdocsPoductComponent({ title, description, imgUrl }) {
+function ProjectTechnologieComponent({ title, imgUrl }) {
   return (
     <ListItem alignItems="flex-start">
       <ListItemAvatar>
         <Avatar alt={title} src={imgUrl} />
       </ListItemAvatar>
-      <ListItemText primary={title} secondary={description} />
+      <ListItemText secondary={title} />
     </ListItem>
   )
 }
 
-export default AmdocsPoductComponent
+export default ProjectTechnologieComponent

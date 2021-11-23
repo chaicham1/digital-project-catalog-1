@@ -49,7 +49,7 @@ function ProjectsCatalogPage({ themeSwitchHandler, isDarkTheme }) {
                   !searchProject &&
                   projects.map((project) => {
                     return (
-                      <Grid item xs={12} sm={6} md={3} key={project.name}>
+                      <Grid item xs={12} sm={4} md={3} key={project.name}>
                         <ProjectCardComponent
                           imgUrl={project.imgUrl}
                           description={project.description}
