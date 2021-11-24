@@ -12,37 +12,34 @@ import {
   Paper,
   CardMedia,
   Button,
-  Collapse,
   Typography,
   IconButton,
   TablePagination,
   Tooltip,
+  Dialog,
+  DialogTitle,
+  DialogActions,
 } from '@mui/material'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone'
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone'
 
 import Loader from '../Common/Loader'
-import { Box } from '@mui/system'
+import CreateNewProjectComponent from './CreateNewProjectComponent'
 
 function ProjectsTableComponent() {
-  //{ id, name, imgUrl, description, amdocsProducts, admins, technologies, teamMembers, links, files }
   const projects = useSelector((state) => state.projects)
   const navigate = useNavigate()
 
   const [loading, setLoading] = useState(true)
+
+  const [openCreateProjectDialog, setOpenCreateProjectDialog] = useState(false)
+
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false)
+  const [currentProjectToDelete, setcurrentProjectToDelete] = useState(null)
+
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage)
-  }
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value)
-    setPage(0)
-  }
 
   useEffect(() => {
     if (projects.length) {
@@ -50,17 +47,48 @@ function ProjectsTableComponent() {
     }
   }, [projects])
 
-  const Row = ({ p }) => {
-    const [expanded, setExpanded] = useState(false)
+  const addProjectHandler = (newProject) => {
+    console.log(newProject)
+    handleCreateProjectClose()
+  }
 
+  const handleCreateProjectOpen = () => {
+    setOpenCreateProjectDialog(true)
+  }
+
+  const handleCreateProjectClose = () => {
+    setOpenCreateProjectDialog(false)
+  }
+
+  //Handle Project Delete
+  const deleteProjectHandler = (project) => {
+    setcurrentProjectToDelete(project)
+    handleDeleteDialogOpen()
+  }
+  const handleDeleteDialogOpen = () => {
+    setOpenDeleteDialog(true)
+  }
+  const handleDeleteDialogClose = () => {
+    setOpenDeleteDialog(false)
+    setcurrentProjectToDelete(null)
+  }
+  const handleDeleteDialogCloseAgree = () => {
+    console.log('agree to delete ' + currentProjectToDelete.name.toUpperCase())
+    handleDeleteDialogClose()
+  }
+
+  //Handle Paggination + Collapsable Row For Custom Table
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage)
+  }
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value)
+    setPage(0)
+  }
+  const Row = ({ p }) => {
     return (
       <>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-          <TableCell component="th" scope="row">
-            <IconButton aria-label="expand row" size="small" onClick={() => setExpanded(!expanded)}>
-              {expanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-            </IconButton>
-          </TableCell>
           <TableCell component="th" scope="row">
             <Button
               onClick={() => {
@@ -79,16 +107,13 @@ function ProjectsTableComponent() {
               aria-label="delete project"
               size="small"
               color="error"
-              onClick={() => console.log(`delete ${p.name}`)}
+              onClick={() => {
+                deleteProjectHandler(p)
+              }}
             >
               <DeleteForeverTwoToneIcon />
             </IconButton>
           </TableCell>
-        </TableRow>
-        <TableRow>
-          <Collapse in={expanded} timeout="auto" unmountOnExit component={'td'}>
-            <Box width={'100%'} height={200}></Box>
-          </Collapse>
         </TableRow>
       </>
     )
@@ -102,13 +127,12 @@ function ProjectsTableComponent() {
         Projects
       </Typography>
       <Paper sx={{ width: '100%' }}>
-        <TableContainer sx={{ maxHeight: 440 }}>
+        <TableContainer sx={{ maxHeight: 600 }}>
           <Table aria-label=" table">
             <TableHead>
               <TableRow>
-                <TableCell></TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell align="left" width={50}>
+                <TableCell width={150}>Name</TableCell>
+                <TableCell align="left" width={100}>
                   Image
                 </TableCell>
                 <TableCell align="left" sx={{ minWidth: 500 }}>
@@ -120,7 +144,7 @@ function ProjectsTableComponent() {
                       aria-label="add new project"
                       size="small"
                       color="success"
-                      onClick={() => console.log(`add new project`)}
+                      onClick={handleCreateProjectOpen}
                     >
                       <AddBoxTwoToneIcon />
                     </IconButton>
@@ -145,6 +169,33 @@ function ProjectsTableComponent() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      {openDeleteDialog && currentProjectToDelete.name && (
+        <Dialog
+          open={openDeleteDialog}
+          onClose={handleDeleteDialogClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            Are you sure you want to delete {currentProjectToDelete.name.toUpperCase()}?
+          </DialogTitle>
+          <DialogActions>
+            <Button variant="contained" onClick={handleDeleteDialogClose}>
+              Disagree
+            </Button>
+            <Button onClick={handleDeleteDialogCloseAgree} autoFocus>
+              Agree
+            </Button>
+          </DialogActions>
+        </Dialog>
+      )}
+      {openCreateProjectDialog && (
+        <CreateNewProjectComponent
+          addProjectHandler={addProjectHandler}
+          handleCreateProjectClose={handleCreateProjectClose}
+          openCreateProjectDialog={openCreateProjectDialog}
+        />
+      )}
     </>
   )
 }
