@@ -20,10 +20,19 @@ function HeaderComponent({ projects, searchHandler, themeSwitchHandler, isDarkTh
 
   const navigate = useNavigate()
 
-  const textColor = isDarkTheme ? '#282828' : '#fff'
+  const textColor = '#fff'
+  const bgColor = isDarkTheme ? '#1565c0' : '#1e88e5'
 
   return (
-    <Box pt={2} pb={2} sx={{ backgroundColor: '#4498d8', color: textColor, boxShadow: 3 }}>
+    <Box
+      pt={1}
+      pb={1}
+      sx={{
+        backgroundColor: bgColor,
+        color: textColor,
+        boxShadow: 3,
+      }}
+    >
       <Container>
         <Grid container rowSpacing={2}>
           <Grid item container xs={12} sm={8} textAlign="left">
